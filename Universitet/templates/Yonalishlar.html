@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fan</title>
+</head>
+<body>
+    <h1>Hamma Yonalishlar</h1>
+    {%for y in yonalishlar%}
+    <ul>
+        <li>
+            {{y.id}}.{{y.nom}} <a href="/y_ochir/{{y.id}}"><button>Delete</button></a>
+        </li>
+    </ul>
+{%endfor%}
+</body>
+</html>

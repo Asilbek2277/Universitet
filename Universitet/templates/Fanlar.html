@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fan</title>
+</head>
+<body>
+    <form>
+        <input name="fan_nomi" type="text" placeholder="Fan nomini yozing">
+        <button>Qidirish</button>
+    </form>
+    <h1>Hamma fanlar</h1>
+    {%for fan in fanlar%}
+    <ul>
+        <li>
+            {{fan.id}}.{{fan.nom}} <a href="/fanni_ochirish/{{fan.id}}"><button>Delete</button></a>
+        </li>
+    </ul>
+{%endfor%}
+</body>
+</html>

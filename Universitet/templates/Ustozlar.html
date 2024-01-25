@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fan</title>
+</head>
+<body>
+    <form>
+        <input name="ustoz_ismi" type="text" placeholder="Ustoz ismini yozing">
+        <button>Qidirish</button>
+    </form>
+    <h1>Hamma Ustozlar</h1>
+    {%for u in ustozlar%}
+    <ul>
+        <li>
+            {{u.id}}.{{u.ism}} <a href="/ustozni_ochirish/{{u.id}}"><button>Delete</button></a>
+        </li>
+    </ul>
+{%endfor%}
+</body>
+</html>
