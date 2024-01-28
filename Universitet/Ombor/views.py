@@ -61,8 +61,13 @@ def fanni_ochirish(req, pk):
 def yonalish(request):
 
     if request.method=="POST":
+        if request.POST.get("active")=='on':
+            natija=True
+        else:
+            natija=False
         Yonalish.objects.create(
             nom=request.POST.get("yonalish"),
+            active=natija,
         )
         return redirect("/yonalish/")
     data={
