@@ -5,10 +5,13 @@
     <title>Fan</title>
 </head>
 <body>
+    <header>
     <form>
         <input name="fan_nomi" type="text" placeholder="Fan nomini yozing">
         <button>Qidirish</button>
     </form>
+    </header>
+    <section>
     <h1>Hamma fanlar</h1>
     {%for fan in fanlar%}
     <ul>
@@ -16,6 +19,22 @@
             {{fan.id}}.{{fan.nom}} <a href="/fanni_ochirish/{{fan.id}}"><button>Delete</button></a>
         </li>
     </ul>
+    </section>
 {%endfor%}
+    <aside>
+        <form method="post">{%csrf_token%}
+            <label>Fan:</label>
+            <input name="fan" type="text" placeholder="Fan nomini yozing">
+            <label>Yonalish:</label>
+            <select name="yonalish">
+                {% for y in yonalishlar%}
+                <option value="{{y.id}}">
+                    {{y.nom}}
+                </option>
+                {%endfor%}
+            </select>
+            <button>Qo'shish</button>
+        </form>
+    </aside>
 </body>
 </html>
