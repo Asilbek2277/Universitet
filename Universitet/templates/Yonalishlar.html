@@ -9,7 +9,10 @@
     {%for y in yonalishlar%}
     <ul>
         <li>
-            {{y.id}}.{{y.nom}} <a href="/y_ochir/{{y.id}}"><button>Delete</button></a>
+            {{y.id}}.{{y.nom}}
+
+            <a href="/y_ochir/{{y.id}}"><button>Delete</button></a>
+            <a href="/yonalishlar/{{y.id}}/tahrirlash/"><button>Edit</button></a>
         </li>
     </ul>
 {%endfor%}

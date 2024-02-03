@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ustozlar</title>
+</head>
+<body>
+
+  <h1>Hamma ustozlarni tahrirlash</h1>
+  <form method="post" action="/ustozlar/{{ustozlar.id}}/tahrirlash/">
+      {% csrf_token %}
+      <label>Ism:</label>
+      <input name="ism" type="text"    value="{{ustozlar.ism}}">
+      <label>Jins:</label>
+      <select name="jins">
+          <option value="Erkak">Erkak</option>
+          <option value="Ayol">Ayol</option>
+      </select>
+      <label>Yosh:</label>
+      <input name="yosh" type="number" value="{{ustozlar.yosh}}">
+      <label>Daraja</label>
+      <select name="daraja" >
+          <option value="Magistr">Magistr</option>
+          <option value="Bakalavr">Bakalavr</option>
+      </select>
+      <label>Fan:</label>
+      <select name="fan"  >
+          {%for i in fanlar%}
+          <option value="{{i.id}}">{{i.nom}}</option>
+          {%endfor%}
+      </select>
+      <button>Edit</button>
+  </form>
+
+</body>
+</html>

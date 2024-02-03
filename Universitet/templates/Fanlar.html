@@ -16,7 +16,9 @@
     {%for fan in fanlar%}
     <ul>
         <li>
-            {{fan.id}}.{{fan.nom}} <a href="/fanni_ochirish/{{fan.id}}"><button>Delete</button></a>
+            {{fan.id}}.{{fan.nom}}
+            <a href="/fanni_ochirish/{{fan.id}}"><button>Delete</button></a>
+            <a href="/fanlar/{{fan.id}}/tahrirlash/"><button>Edit</button></a>
         </li>
     </ul>
     </section>

@@ -13,7 +13,9 @@
     {%for u in ustozlar%}
     <ul>
         <li>
-            {{u.id}}.{{u.ism}} <a href="/ustozni_ochirish/{{u.id}}"><button>Delete</button></a>
+            {{u.id}}.{{u.ism}}
+            <a href="/ustozni_ochirish/{{u.id}}"><button>Delete</button></a>
+            <a href="/ustozlar/{{u.id}}/tahrirlash/"><button>Edit</button></a>
         </li>
     </ul>
 {%endfor%}
