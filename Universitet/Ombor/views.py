@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 
 from .models import *
 
+from .forms import  *
 
 def fanlarni_tahrirlash(request, pk):
     if request.method == 'POST':
@@ -22,10 +23,15 @@ def fanlarni_tahrirlash(request, pk):
 
 def fanlar(request):
     if request.method == "POST":
-        Fan.objects.create(
-            nom=request.POST.get("fan"),
-            yonalish=Yonalish.objects.get(id=request.POST.get("yonalish"))
-        )
+
+        fanlar=FanForm(request.POST)
+        if fanlar.is_valid():
+            fanlar.save()
+
+        # Fan.objects.create(
+        #     nom=request.POST.get("fan"),
+        #     yonalish=Yonalish.objects.get(id=request.POST.get("yonalish"))
+        # )
         return redirect("/fanlar/")
 
     n = Fan.objects.all()
@@ -34,7 +40,8 @@ def fanlar(request):
         n = Fan.objects.filter(nom__contains=fan)
     data = {
         "yonalishlar": Yonalish.objects.all(),
-        "fanlar": n
+        "fanlar": n,
+        'forms': FanForm()
     }
     return render(request, "Fanlar.html", data)
 
@@ -64,13 +71,19 @@ def ustozlar(request):
     # Ustozlar jadvaliga malumot qo'shish qismi
 
     if request.method == "POST":
-        Ustoz.objects.create(
-            ism=request.POST.get("ism"),
-            jins=request.POST.get("jins"),
-            yosh=request.POST.get("yosh"),
-            daraja=request.POST.get("daraja"),
-            fan=Fan.objects.get(id=request.POST.get("fan")),
-        )
+
+        ustoz=UstozForm(request.POST)
+
+        if ustoz.is_valid():
+            ustoz.save()
+
+        # Ustoz.objects.create(
+        #     ism=request.POST.get("ism"),
+        #     jins=request.POST.get("jins"),
+        #     yosh=request.POST.get("yosh"),
+        #     daraja=request.POST.get("daraja"),
+        #     fan=Fan.objects.get(id=request.POST.get("fan")),
+        # )
         return redirect("/ustozlar/")
 
     # Ustozlar jadvalidan qidirish qismi
@@ -81,7 +94,8 @@ def ustozlar(request):
         n = Ustoz.objects.filter(ism__contains=ustoz)
     data = {
         "fanlar": Fan.objects.all(),
-        "ustozlar": n
+        "ustozlar": n,
+        'forms': UstozForm()
     }
     return render(request, "Ustozlar.html", data)
 
@@ -119,17 +133,26 @@ def yonalish_tahrirlash(request, pk):
 
 def yonalish(request):
     if request.method == "POST":
-        if request.POST.get("active") == 'on':
-            natija = True
-        else:
-            natija = False
-        Yonalish.objects.create(
-            nom=request.POST.get("yonalish"),
-            active=natija,
-        )
+
+        yonalish=YonalishForm(request.POST)
+        if yonalish.is_valid():
+            yonalish.save()
+
+
+
+
+        # if request.POST.get("active") == 'on':
+        #     natija = True
+        # else:
+        #     natija = False
+        # Yonalish.objects.create(
+        #     nom=request.POST.get("yonalish"),
+        #     active=natija,
+        # )
         return redirect("/yonalish/")
     data = {
-        "yonalishlar": Yonalish.objects.all()
+        "yonalishlar": Yonalish.objects.all(),
+        'forms':YonalishForm()
     }
     return render(request, "Yonalishlar.html", data)
 

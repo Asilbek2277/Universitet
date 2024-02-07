@@ -25,16 +25,19 @@
 {%endfor%}
     <aside>
         <form method="post">{%csrf_token%}
-            <label>Fan:</label>
-            <input name="fan" type="text" placeholder="Fan nomini yozing">
-            <label>Yonalish:</label>
-            <select name="yonalish">
-                {% for y in yonalishlar%}
-                <option value="{{y.id}}">
-                    {{y.nom}}
-                </option>
-                {%endfor%}
-            </select>
+
+            {{forms.as_p}}
+
+<!--            <label>Fan:</label>-->
+<!--            <input name="fan" type="text" placeholder="Fan nomini yozing">-->
+<!--            <label>Yonalish:</label>-->
+<!--            <select name="yonalish">-->
+<!--                {% for y in yonalishlar%}-->
+<!--                <option value="{{y.id}}">-->
+<!--                    {{y.nom}}-->
+<!--                </option>-->
+<!--                {%endfor%}-->
+<!--            </select>-->
             <button>Qo'shish</button>
         </form>
     </aside>

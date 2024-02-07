@@ -18,9 +18,12 @@
 {%endfor%}
 
     <form method="post">{%csrf_token%}
-        <input name="yonalish" type="text" placeholder="Yonalish nomini yozing">
-        <label>Active:</label>
-        <input type="checkbox" name="active">
+
+        {{forms.as_p}}
+
+<!--        <input name="yonalish" type="text" placeholder="Yonalish nomini yozing">-->
+<!--        <label>Active:</label>-->
+<!--        <input type="checkbox" name="active">-->
         <button>Qo'shish</button>
     </form>
 
